@@ -1,0 +1,49 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body , html{
+    width: 100vw;
+}
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+}
+.lessons-container{
+    width: 18%;
+    height: 300px;
+    border: 1px solid black;
+    margin-top: 100px;
+    border-radius: 7px;
+}
+.lessons-container > .image-container {
+    width: 100%;
+    height: 230px;
+    border-top-right-radius :7px;
+    border-top-left-radius :7px;
+}
+.image-container > img{
+    width: 100%;
+    height: 100%;
+}
+.lesson-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+.lesson-title > p{
+color: black;
+}
+img{
+    border-top-right-radius :7px;
+    border-top-left-radius :7px;
+}
+h1{
+    color: black;
+}

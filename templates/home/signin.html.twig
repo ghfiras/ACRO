@@ -1,0 +1,27 @@
+<head>
+    <link rel="stylesheet" href="{{asset('css/signin.css')}}">
+<div class="form-container">
+{{form_start(form)}}
+<div class="form-field">
+    
+        {{form_label(form.nom)}}
+        {{form_widget(form.nom)}}
+</div>
+<div class="form-field">
+        {{form_label(form.prenom)}}
+        {{form_widget(form.prenom)}}
+</div>
+<div class="form-field">
+    {{form_label(form.email)}}
+    {{form_widget(form.email)}}
+</div>
+<div class="form-field">
+    {{form_label(form.password)}}
+    {{form_widget(form.password)}}
+</div>
+<div class="btn" >
+<button type="reset">annuler</button>
+<button type="submit">envoyer</button>
+</div>
+<div>
+{{form_end(form)}}

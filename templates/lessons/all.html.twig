@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/all-lessons.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container">
+    {% for lesson in lessons %}
+        <div class="lessons-container">
+            <div class="image-container">
+                <img src="{{ asset(lesson.image) }}" alt="">
+            </div> 
+            <div class="lesson-title">
+                <p>{{ lesson.categorie }}</p>
+            </div>
+        </div>  
+    {% endfor %}
+    </div>
+{% endblock %}
