@@ -18,12 +18,14 @@ class UserType extends AbstractType
             ->add('prenom' , TextType::class , [
                 'attr' =>  [
                     'placeholder' => 'tapez votre prénom ici'             
-                ] 
+                ] ,
+                'required' => false
             ])
             ->add('nom' , TextType::class , [
                 'attr' => [
                     'placeholder' => 'tapez votre nom ici'
-                ]
+                ],
+                'required' => false
             ])
             ->add('email' , EmailType::class , [
                 'attr' => [

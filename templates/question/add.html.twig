@@ -1,0 +1,20 @@
+{% extends "sidebar.html.twig" %}
+{% block body %}
+{{form_start(QuestionForm)}}
+
+<div class="form-group">
+	{{form_label(QuestionForm.question) }}
+	{{ form_widget(QuestionForm.question)}}
+</div>
+<div class="form-group">
+	{{form_label(QuestionForm.image) }}
+	{{ form_widget(QuestionForm.image)}}
+</div>
+<div class="form-group">
+	{{form_label(QuestionForm.categorie) }}
+	{{ form_widget(QuestionForm.categorie)}}
+</div>
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+{{form_end(QuestionForm)}}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "before.html.twig" %}
+{% block stylesheets %}
+<link rel="stylesheet" href=" {{ asset('web/css/examen-question.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="question">
+            <div class="question-image">
+                <img src="{{ asset(question.image) }}" alt=""> 
+            </div>
+            <div class="question-text"> {{ question.question }} </div>
+            <div class="question-choices">
+                <a class="choix">
+                    <p class="choix-text"> {{ question.getChoixes().get(0).getChoix()}} </p><div class="icon first">أ</div>
+                </a>
+                <a class="choix">
+                    <p class="choix-text"> {{ question.getChoixes().get(1).getChoix()}} </p><div class="icon second"> ب </div>
+                </a>
+                <a class="choix">
+                <p class="choix-text"> {{ question.getChoixes().get(2).getChoix()}} </p><div class="icon third">ج</div>
+                </a>
+            </div>
+        </div>
+        <a class="next" href="{{ path('examen.question', {'number': number+1 }) }}">
+            التالي
+        </a>
+        <div class="reponse">
+            <p class="responde-text">: إجابتك</p>
+            <div class="responde-icon">
+
+            </div>
+        </div>
+    </div>
+    <script src=""></script>
+{% endblock %}

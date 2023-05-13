@@ -1,0 +1,43 @@
+{% extends "before.html.twig" %}
+{% block stylesheets %}
+<link rel="stylesheet" href=" {{ asset('web/css/examen-question.css') }}">
+{% endblock %}
+{#{% block javascripts %}
+    <script src="{{ asset('js/examen-questions.js') }} "></script>  
+{% endblock %}#}
+{% block body %}
+    <div class="container">
+        <div class="question">
+            <div class="question-image">
+                <img src="{{ asset(question.image) }}" alt=""> 
+            </div>
+            <div class="question-text"> {{ question.question }} </div>
+            <div class="question-choices">
+                <form action="">
+                <label class="choix" for="first_choice" data-id="أ">
+                    <p class="choix-text"> {{ question.getChoixes().get(0).getChoix()}} </p><div class="icon first">أ</div>
+                    <input type="radio" id="first_choice" name="choice">
+                </label>
+                <label class="choix" for="second_choice" data-id="ب">
+                    <p class="choix-text"> {{ question.getChoixes().get(1).getChoix()}} </p><div class="icon second"> ب </div>
+                    <input type="radio" id="second_choice" name="choice">
+                </label>
+                <label class="choix" for="third_choice" data-id="ج">
+                    <p class="choix-text"> {{ question.getChoixes().get(2).getChoix()}} </p><div class="icon third">ج</div>
+                    <input type="radio" id="third_choice" name="choice">
+                </label>
+                </form>
+            </div>
+        </div>
+        <a class="next" href="{{ path('examen.question', {'number': number+1 }) }}">
+            التالي
+        </a>
+        <div class="reponse">
+            <p class="responde-text">: إجابتك</p>
+            <div class="responde-icon">
+
+            </div>
+        </div>
+    </div>
+    <script src="{{ asset('js/examen-questions.js') }} "></script>  
+{% endblock %}
