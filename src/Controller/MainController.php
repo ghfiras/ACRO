@@ -2,13 +2,12 @@
 
 namespace App\Controller;
 use App\Entity\User;
-use App\Form\UserType;
-use App\Service\userService;
+use App\Repository\PasserExamenRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class MainController extends AbstractController
 {
@@ -16,46 +15,33 @@ class MainController extends AbstractController
     public function home(): Response
     {
         return $this->render('home/home.html.twig' , [
-            'isLOgged' => false ,
-            'user' => new User(),
         ]);
     }
-    #[Route('/login', name: 'app_login')]
-    public function login(Request $req , EntityManagerInterface $em ): Response
+    #[Route('/historique', name: 'app_history')]
+    public function historique(EntityManagerInterface $em): Response
     {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($req);
-        if($form->isSubmitted() && $form->isValid()){
-            $user->setRole('user');
-            $repo = $em->getRepository(User::class);
-            /*$userSer->setUser($user);*/
-            $repo->save($user);
+        $user = $this->getUser();
+        if($user != null){
+            $PasserExamens = $user->getPasserExamens(); 
+            /*for($i = 0 ; $i < count($PasserExamens) ; $i++ ){
+                $PasserExamens->get($i)->fixExamen($em);
+            }
             $em->flush();
-            /*$userSer->setIsLogged(true);*/
-            return $this->redirect($this->generateUrl('app_lessons'));
+            $PasserExamens = $user->getPasserExamens(); */
+        }else{
+            $PasserExamens = [];
         }
-        return $this->render('home/login.html.twig', [
-            'form' => $form ,
+        return $this->render('examen/historique.html.twig' , [
+            'passerExamens' => $PasserExamens ,
+            'user' => $user ,
         ]);
     }
-    #[Route('/signin', name: 'app_signin')]
-    public function signin(Request $req , EntityManagerInterface $em , userService $userSer): Response
+    #[Route('/historique/delete/{id}', name: 'app_delete_history')]
+    public function delete(PasserExamenRepository $passerRepo , int $id): Response
     {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($req);
-        if($form->isSubmitted() && $form->isValid()){
-            $user->setRole('user');
-            $repo = $em->getRepository(User::class);
-            $userSer->setUser($user);
-            $repo->save($user);
-            $em->flush();
-            $userSer->setIsLogged(true);
-            return $this->redirect($this->generateUrl('app_lessons'));
-        }
-        return $this->render('home/signin.html.twig' , [
-            'form' => $form ,
-        ]);
+        $passExamen = $passerRepo->find($id);
+        $passerRepo->remove($passExamen , true);
+        return $this->redirect($this->generateUrl('app_history'));
     }
+
 }

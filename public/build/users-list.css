@@ -1,0 +1,130 @@
+body{
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    background-color: #DDE6ED;
+}
+.user{
+    border: 3px solid #1D267D ;
+    width: 750px;
+    height: 230px;
+    margin-top: 15px;
+    border-radius: 10px;
+    position: relative;
+    background-color: white;
+}
+.personel-infos , .email-infos , .first_name , .last_name , .email , .password{
+    display: flex;
+    align-items: center;
+}
+.personel-infos , .email-infos{
+    width: 90%;
+    margin-left: 40px;
+}
+.email , .password , .first_name , .last_name{
+    width: 40%;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+.field-text{
+    padding-left:5px;
+    margin-left: 10px;
+    text-overflow: ellipsis;
+}
+.icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 60px;
+    background-color: #DBDFEA;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.icon > i{
+    font-size: 20px;
+}
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    width: 320px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.btn > a{
+    height: 40px;
+    width: 135px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 10px;
+}
+.update{
+    background-color: #FFC107;
+    color: black;
+}
+.delete{
+    color: white;
+    background-color: #DC3545;
+}
+.add-user , .question-list , .all-lessons{
+    background-color: #1D267D;
+    color: white;
+    width: 200px;
+    height: 70px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    text-decoration: none;
+}
+.all-lessons{
+    right: 25px;
+    bottom: 50px;
+}
+.add-user {
+    right: 25px;
+    bottom: 230px;
+}
+.question-list{
+    right: 25px;
+    bottom: 140px;
+}
+a:hover , .users-list:hover{
+    color: white;
+}
+.select-roles{
+    width: 300px;
+}
+p.field-text {
+    text-overflow: ellipsis;
+    width: 350px;
+    font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.disabled-link {
+    pointer-events: none;
+    color: gray;
+    cursor: default;
+}
+.disabled-link-update{
+    background-color: #FCFFB2;
+    pointer-events: none;
+    color: black;
+    cursor: default;
+}
+.disabled-link-delete{
+    background-color:#F9DBBB;
+    pointer-events: none;
+    color: black;
+    cursor: default;
+}

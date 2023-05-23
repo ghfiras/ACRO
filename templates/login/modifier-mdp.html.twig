@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    <link rel="stylesheet" href=" {{ asset('build/sign-in.css') }}">
+{% endblock %}
+{% block javascripts %}
+    <script src="https://kit.fontawesome.com/640b361ca9.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block body %}
+    <div class="mdp-form-container">
+        <h2>ACRO</h2>
+        <h5>changer votre mot de pass</h5>
+    {{form_start(form)}}
+        <div class="form-field">
+            {{form_label(form.password)}}
+            <div class="input-field">
+                <div class="field-icon"><i class="fa-solid fa-lock"></i></div>
+                {{form_widget(form.password)}}
+            </div>
+                {% if form_errors(form.password) %}
+                <div class="errors">{{form_errors(form.password)}}</div>
+        {% endif %}
+        </div>
+        <div class="form-field">
+            {{form_label(form.confirmPassword.first)}}
+            <div class="input-field">
+                <div class="field-icon"><i class="fa-solid fa-lock"></i></div>
+                {{form_widget(form.confirmPassword.first)}}
+            </div>
+        </div>
+        <div class="form-field">
+            {{form_label(form.confirmPassword.second)}}
+            <div class="input-field">
+                <div class="field-icon"><i class="fa-solid fa-lock"></i></div>
+                {{form_widget(form.confirmPassword.second)}}
+            </div>
+                {% if form_errors(form.password) %}
+                <div class="errors">{{form_errors(form.password)}}</div>
+                {% endif %}
+        </div>
+        <div class="eye-icon">
+            <i class="fa-solid fa-eye"></i>
+        </div>
+        <div class="btn">
+            <button type="submit">Changer</button>
+        </div>
+        {{form_end(form)}}
+    <div>    
+    <a href="{{path('app_lessons')}}" class="back">retour</a> 
+    <script src="{{ asset('js/change-password.js') }} "></script>  
+{% endblock %}
+

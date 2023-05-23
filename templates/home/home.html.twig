@@ -1,6 +1,14 @@
 {% extends "before.html.twig" %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('build/first.css')}}" >
+{% endblock %}
 {% block body %}
-<div class="image-container">
-    <img src="{{ asset('home-image/home.jpeg')}}"> // src error
+<div class="home-container">
+    <img src="{{ asset('home-image/home.jpg')  }}" alt="home image"> 
+    <h3></h3>
+    <p class="intro"><strong>Bienvenue</strong> sur notre site dédié aux tests et leçons de conduite ! 
+    Que vous souhaitiez obtenir votre permis de conduire ou simplement rafraîchir vos connaissances en matière de conduite, 
+    nous sommes là pour vous aider. Notre plateforme propose une gamme complète de ressources pédagogiques  pour vous accompagner tout au long de votre parcours d'apprentissage.</p>
+    <a href="{{path('app_lessons')}}" class="get-started">commencez maintenant</a>
 </div>
 {% endblock %}

@@ -38,14 +38,20 @@ class QuestionRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-    public function findThirtyQuestions()
+    /*public function getTest(): array
     {
-        return $this->createQueryBuilder('q')
-            ->setMaxResults(30)
-            ->getQuery()
-            ->getResult();
-    }
+        $entityManager = $this->getEntityManager();
 
+        $query = $entityManager->createNativeQuery('
+            SELECT *
+            FROM question
+            ORDER BY RAND()
+            LIMIT :limit
+        ', $this->getEntityClass())
+            ->setParameter('limit', 30);
+
+        return $query->getResult();
+    }*/
 
 //    /**
 //     * @return Question[] Returns an array of Question objects

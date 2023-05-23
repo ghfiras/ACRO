@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar-fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('build/sign-in.css')}}"> 
+{% endblock %}
+{% block javascripts %}
+    <script src="https://kit.fontawesome.com/640b361ca9.js" crossorigin="anonymous"></script>
+{% endblock %}
+    <title></title>
+</head>
+<body>
+<div class="form-container">
+    <h2>ACRO</h2>
+    <h5>créer un nouveau compte</h5>
+{{form_start(registrationForm)}}
+    <div class="form-field">
+        {{form_label(registrationForm.prenom)}}
+        <div class="input-field">
+            <div class="field-icon"><i class="fa-solid fa-user"></i></div>
+            {{form_widget(registrationForm.prenom)}}
+        </div>
+        {% if form_errors(registrationForm.prenom) %}
+            <div class="errors">{{form_errors(registrationForm.prenom)}}</div>
+        {% endif %}
+    </div>
+    <div class="form-field">
+        {{form_label(registrationForm.nom)}}
+        <div class="input-field">
+            <div class="field-icon"><i class="fa-solid fa-user"></i></div>
+            {{form_widget(registrationForm.nom)}}
+        </div>
+        {% if form_errors(registrationForm.nom) %}
+        <div class="errors">{{form_errors(registrationForm.nom)}}</div>
+        {% endif %}
+    </div>
+    <div class="form-field">
+        {{form_label(registrationForm.email)}}
+        <div class="input-field">
+            <div class="field-icon"><i class="fa-solid fa-envelope"></i></div>
+            {{form_widget(registrationForm.email)}}
+        </div>
+        {% if form_errors(registrationForm.email) %}
+        <div class="errors">{{form_errors(registrationForm.email)}}</div>
+        {% endif %}
+    </div>
+    <div class="form-field">
+        {{form_label(registrationForm.password)}}
+        <div class="input-field">
+            <div class="field-icon"><i class="fa-solid fa-lock"></i></div>
+            {{form_widget(registrationForm.password)}}
+        </div>
+        {% if form_errors(registrationForm.password) %}
+        <div class="errors">{{form_errors(registrationForm.password)}}</div>
+        {% endif %}
+    </div>
+    <a class="log-in" href="{{path('app_login')}}">connectez a votre compte ?</a>
+    <div class="btn">
+        <button type="submit">Créer</button>
+    </div>
+    {{form_end(registrationForm)}}
+<div>    
+</body>
+</html>
+
+

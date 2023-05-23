@@ -1,0 +1,38 @@
+.home-container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.home-container > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.get-started{
+    background-color: #16FF00;
+    width: 300px;
+    height: 80px;
+    font-size: 23px;
+    position: absolute;
+    z-index: 10;
+    top: 60%;
+    left: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F2E3DB;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+.intro{
+    position: absolute;
+    z-index: 10;
+    top: 30%;
+    left: 35%;
+    height: 250px;
+    width: 500px;
+    font-size: 23px;
+    text-align: center;
+    color: white;
+}

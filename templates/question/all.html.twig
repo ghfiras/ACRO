@@ -1,14 +1,17 @@
-{% extends "sidebar.html.twig" %}
+{% extends 'base.html.twig' %}
 {% block stylesheets %}
-<link rel="stylesheet" href=" {{ asset('web/css/list-questions.css') }}" >
+<link rel="stylesheet" href=" {{ asset('build/list-questions.css') }}" >
 {% endblock %}
+{% block javascripts %}
+    <script src="https://kit.fontawesome.com/640b361ca9.js" crossorigin="anonymous"></script>
+{% endblock %} 
 {% block body %}
 <div class="container">
     <div class="question-list">
     {% for question in questions %}
         <div class="question">
             <div class="image-container">
-                <img src="{{ question.image}}" alt="">
+                <img src="{{ asset(question.image) }}" alt=""> 
             </div>
             <div class="question-content">
                 {{ question.question}}
@@ -32,12 +35,15 @@
             </div>
             <div class="actions">
                 <div class="btn">
-                    <a href="" class="btn btn-warning">modifier</a>
-                    <a href="" class="btn btn-danger">supprimer</a>
+                    <a href="{{path('question_modifier' , {'id':question.id})}}" class="update-quest">modifier</a>
+                    <a href="{{path('question_supprimer' , {'id' : question.id})}}" class="delete-quest">supprimer</a>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
+<a class="users-list" href="{{path('users.all_users')}}">liste des utilisateurs</a>
+<a class="add-question" href="{{path('questionapp_question_add')}}">Ajouter question</a>
+<a class="all-lessons" href="{{path('app_lessons')}}">retour</a>
 {% endblock %}

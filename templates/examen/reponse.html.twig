@@ -1,0 +1,77 @@
+{% extends user is null ? 'before.html.twig' : 'after.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href=" {{ asset('build/examen-question.css') }}">
+{% endblock %}
+{% block javascripts %}
+    <script src="https://kit.fontawesome.com/640b361ca9.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/examen-reponse.js') }}" ></script>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="question">
+                <div class="leftandright">
+                {% if number > 0 %}
+                <a href="{{ path('examen.reponse_correct' , {'passerExamenId' :passerExamen.getId() , 'number' : number - 1 })}}" class="prev-reponse"><i class="fa-solid fa-arrow-left"></i></a>
+                {% else %}
+                <div></div>
+                {% endif %}
+                {% if number < 29 %}
+                <a href="{{ path('examen.reponse_correct' , {'passerExamenId' :passerExamen.getId() , 'number' : number + 1 })}}" class="next-reponse"><i class="fa-solid fa-arrow-right"></i></a>
+                {% else %}
+                <div></div>
+                {% endif %}
+            </div>
+            <div class="question-image">
+                <img src="{{ asset(question.image) }}" alt=""> 
+            </div>
+            <div class="question-text"> {{ question.question }} </div>
+            <div class="question-choices">
+                <div class="choix" for="first_choice" data-id="أ">
+                    <p class="choix-text"> {{ question.getChoixes().get(0).getChoix()}} </p><div class="icon first">أ</div>
+                </div>
+                <div class="choix" for="second_choice" data-id="ب">
+                    <p class="choix-text"> {{ question.getChoixes().get(1).getChoix()}} </p><div class="icon second"> ب </div>
+                </div>
+                <div class="choix" for="third_choice" data-id="ج">
+                    <p class="choix-text"> {{ question.getChoixes().get(2).getChoix()}} </p><div class="icon third">ج</div>
+                </div>
+            </div>
+        </div>
+        <div class="reponse">
+            <p class="responde-text">: إجابتك</p>
+            {% if choix == null %}
+            <div class="responde-icon">
+                ?
+            </div>
+            {% elseif question.getChoixes().get(0).getChoix() == choix.getChoix() %}
+            <div class="responde-icon first">
+                أ
+            </div>
+            {% elseif question.getChoixes().get(1).getChoix() == choix.getChoix()  %}
+            <div class="responde-icon second">
+                ب
+            </div>
+            {% elseif question.getChoixes().get(2).getChoix() == choix.getChoix()  %}
+            <div class="responde-icon third">
+                ج
+            </div>
+            {% endif %}
+        </div>
+        <div class="reponse reponse-correct">
+            <p class="responde-text">: الإجابة الصحيحة</p>
+            {% if question.getChoixes().get(0).isCorrect()  %}
+            <div class="responde-icon first">
+                أ
+            </div>
+            {% elseif question.getChoixes().get(1).isCorrect()  %}
+            <div class="responde-icon second">
+                ب
+            </div>
+            {% else %}
+            <div class="responde-icon third">
+                ج
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

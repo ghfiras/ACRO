@@ -28,9 +28,17 @@ class Question
     #[ORM\OneToMany(mappedBy: 'question', targetEntity: Choix::class)]
     private Collection $choixes;
 
+    #[ORM\ManyToMany(targetEntity: Examen::class, mappedBy: 'questions')]
+    private Collection $examens;
+
+    #[ORM\OneToMany(mappedBy: 'qyestion', targetEntity: Reponse::class)]
+    private Collection $reponses;
+
     public function __construct()
     {
         $this->choixes = new ArrayCollection();
+        $this->examens = new ArrayCollection();
+        $this->reponses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -101,5 +109,71 @@ class Question
             }
         }
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Examen>
+     */
+    public function getExamens(): Collection
+    {
+        return $this->examens;
+    }
+
+    public function addExamen(Examen $examen): self
+    {
+        if (!$this->examens->contains($examen)) {
+            $this->examens->add($examen);
+            $examen->addQuestion($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExamen(Examen $examen): self
+    {
+        if ($this->examens->removeElement($examen)) {
+            $examen->removeQuestion($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reponse>
+     */
+    public function getReponses(): Collection
+    {
+        return $this->reponses;
+    }
+
+    public function addReponse(Reponse $reponse): self
+    {
+        if (!$this->reponses->contains($reponse)) {
+            $this->reponses->add($reponse);
+            $reponse->setQuestion($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReponse(Reponse $reponse): self
+    {
+        if ($this->reponses->removeElement($reponse)) {
+            // set the owning side to null (unless already changed)
+            if ($reponse->getQuestion() === $this) {
+                $reponse->setQuestion(null);
+            }
+        }
+
+        return $this;
+    }
+    public function getCorrectChoice():Choix{
+        if($this->getChoixes()->get(0)->isCorrect() == true ){
+            return $this->getChoixes()->get(0) ;
+        }else if($this->getChoixes()->get(1)->isCorrect() == true ){
+            return $this->getChoixes()->get(1);
+        }else{
+            return $this->getChoixes()->get(2);
+        }
     }
 }

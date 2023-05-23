@@ -1,6 +1,6 @@
-{% extends "before.html.twig" %}
+{% extends user is null ? 'before.html.twig' : 'after.html.twig' %}
 {% block stylesheets %}
-<link rel="stylesheet" href=" {{ asset('web/css/examen-question.css') }}">
+<link rel="stylesheet" href=" {{ asset('build/examen-question.css') }}">
 {% endblock %}
 {#{% block javascripts %}
     <script src="{{ asset('js/examen-questions.js') }} "></script>  
@@ -13,25 +13,23 @@
             </div>
             <div class="question-text"> {{ question.question }} </div>
             <div class="question-choices">
-                <form action="">
+                <form action="{{ path('examen.response',{'passerExamenId' : passerExamenId ,'questionId' : question.id , 'number': number } )}}" method="POST">
                 <label class="choix" for="first_choice" data-id="أ">
                     <p class="choix-text"> {{ question.getChoixes().get(0).getChoix()}} </p><div class="icon first">أ</div>
-                    <input type="radio" id="first_choice" name="choice">
+                    <input type="radio" id="first_choice" name="choice" value="{{ question.getChoixes().get(0).id}} ">
                 </label>
                 <label class="choix" for="second_choice" data-id="ب">
                     <p class="choix-text"> {{ question.getChoixes().get(1).getChoix()}} </p><div class="icon second"> ب </div>
-                    <input type="radio" id="second_choice" name="choice">
+                    <input type="radio" id="second_choice" name="choice" value="{{ question.getChoixes().get(1).id}} ">
                 </label>
                 <label class="choix" for="third_choice" data-id="ج">
                     <p class="choix-text"> {{ question.getChoixes().get(2).getChoix()}} </p><div class="icon third">ج</div>
-                    <input type="radio" id="third_choice" name="choice">
+                    <input type="radio" id="third_choice" name="choice" value="{{ question.getChoixes().get(2).id}} ">
                 </label>
+                    <button class="next" type="submit">التالي</button>
                 </form>
             </div>
         </div>
-        <a class="next" href="{{ path('examen.question', {'number': number+1 }) }}">
-            التالي
-        </a>
         <div class="reponse">
             <p class="responde-text">: إجابتك</p>
             <div class="responde-icon">

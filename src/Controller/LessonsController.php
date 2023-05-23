@@ -12,14 +12,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class LessonsController extends AbstractController
 {
     #[Route('/lessons', name: 'app_lessons')]
-    public function index(EntityManagerInterface $em , userService $userSer): Response
+    public function index(EntityManagerInterface $em): Response
     {
         $repo = $em->getRepository(Categorie::class);
         $lessons = $repo->findAll();
         return $this->render('lessons/all.html.twig', [
             'lessons' =>  $lessons ,
-            'isLogged' => $userSer->isLogged(),
-            'user' => $userSer->getUser(),
+            'user' => $this->getUser(),
         ]);
     }
+
+    
 }

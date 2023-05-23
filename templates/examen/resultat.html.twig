@@ -1,0 +1,22 @@
+{% extends user is null ? 'before.html.twig' : 'after.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href=" {{ asset('build/resultat.css') }}">
+{% endblock %}
+{% block body %}
+<div class="container"> 
+    <div class="progress-container">
+        <div class="score-container">
+            <div class="parent-progress">
+            </div>
+            <div class="child-progress">
+                <div class="score"><span>{{score}}</span>/30</div>
+            </div>
+        </div>
+        <div class="btns">
+            <a href="{{path('app_lessons')}}" class="first-btn">retour</a>
+            <a href="{{ path('examen.reponse_correct' , {'passerExamenId' :passserExamenId , 'number' : 0})}}" class="second-btn">correction</a>
+        </div>
+    </div>
+</div>
+<script src="{{ asset('js/score.js') }}"></script>  
+{% endblock %}

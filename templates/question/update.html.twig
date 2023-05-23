@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<link rel="stylesheet" href=" {{ asset('build/question-add.css') }}">
+{% endblock %}
+{% block body %}
+<div class="form-container">
+<h3>Ajouter une question</h3>
+<div class="form-container">
+{{form_start(form)}}
+    <div class="form-group">
+		{{ form_label(form.question)}}
+		{{form_widget(form.question)}}
+	</div>
+	<div class="form-group">
+	    {{ form_label(form.image)}}
+	    {{form_widget(form.image)}}
+	</div>
+	<div class="form-group">
+		{{ form_label(form.categorie)}}
+	    {{form_widget(form.categorie)}}
+	</div>
+	<div class="form-group">
+		{{ form_label(form.choix1)}}
+	    {{form_widget(form.choix1 , { 'value': choix1})}}
+	</div>
+	<div class="form-group">
+		{{ form_label(form.choix2)}}
+	    {{form_widget(form.choix2 , { 'value': choix2})}}
+	</div>
+		<div class="form-group">
+		{{ form_label(form.choix3)}}
+	    {{form_widget(form.choix3 , { 'value': choix3})}}
+	</div>
+    <div class="form-group">
+		{{ form_label(form.isCorrect)}}
+	    {{form_widget(form.isCorrect , { 'value': isCorrect })}}
+	</div>
+	<button class="send">modifier</button>
+	<div><a href="{{path('question_all')}}">retourner a la liste des questions</a><span></span></div>
+{{form_end(form)}}
+<div>  
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends user is null ? 'before.html.twig' : 'after.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href=" {{ asset('build/histo.css') }}">
+{% endblock %}
+{#{% block javascripts %}
+    <script src="{{ asset('js/examen-questions.js') }} "></script>  
+{% endblock %}#}
+{% block body %}
+    <div class="container">
+    <div class="note">
+        <div><div class="gre-cer"></div><p>صحيح</p></div>
+        <div><div class="red-cer"></div><p>خطأ</p></div>
+        <div><div class="yel-cer"></div><p>بدون إجابة</p></div>
+    </div> 
+    {% if passerExamens|length > 0 %}
+    {% for passerExamen in passerExamens %}
+        <div class="examen">
+            <div class="examen-header">
+                <div class="date">{{ passerExamen.getExamen().getDate() }}</div>
+                <div class="score">
+                {% if passerExamen.getScore() >= 24 %}
+                    <span class="pass-examen">{{ passerExamen.getScore() }}</span>
+                {% else %}
+                    <span class="fail-examen">{{ passerExamen.getScore() }}</span>
+                {% endif %}
+                /30</div>
+            </div>
+            <div class="questions">
+                {% for key , reponse in passerExamen.getReponses() %}
+                    {% if key < 15 %}
+                        {% if reponse.getChoix() == null %}
+                            <a class="question pass" href="{{ path('examen.reponse_correct',{'passerExamenId':passerExamen.getId(),'number':key })}}">
+                                {{ key + 1}}
+                            </a>
+                        {% elseif reponse.getChoix().isCorrect() == false %}
+                            <a class="question wrong" href="{{ path('examen.reponse_correct',{'passerExamenId':passerExamen.getId(),'number':key })}}">
+                                {{ key + 1}}
+                            </a> 
+                        {% else %}
+                            <a class="question correct" href="{{ path('examen.reponse_correct',{'passerExamenId':passerExamen.getId(),'number':key })}}">
+                                {{ key + 1}}
+                            </a> 
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="questions">
+                {% for key , reponse in passerExamen.getReponses() %}
+                    {% if key > 14  %}
+                        {% if reponse.getChoix() == null %}
+                            <a class="question pass" href="{{ path('examen.reponse_correct',{'passerExamenId':passerExamen.getId(),'number':key })}}">
+                                {{ key + 1}}
+                            </a>
+                        {% elseif reponse.getChoix().isCorrect() == true %}
+                            <a class="question correct" href="{{ path('examen.reponse_correct',{'passerExamenId':passerExamen.getId(),'number':key })}}">
+                                {{ key + 1}}
+                            </a> 
+                        {% else %}
+                            <a class="question wrong" href="{{ path('examen.reponse_correct',{'passerExamenId':passerExamen.getId(),'number':key })}}">
+                                {{ key + 1}}
+                            </a> 
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <a href="{{path('app_delete_history' , {'id' : passerExamen.id })}}" class="delete-history">supprimer</a>
+        </div>
+        {% endfor %}
+        {% else %}
+            <h2 class="vide">Historique est vide !</h2>
+        {% endif %}
+    </div>
+{% endblock %}

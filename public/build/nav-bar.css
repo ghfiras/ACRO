@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+a{
+    text-decoration: none;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body , html {
+    width: 100%;
+    height: 100%;
+}
+nav , .menu , .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1D267D;
+    color: white;
+}
+nav > a , .menu > a{
+    color: white;
+}
+nav{
+    height: 60px;
+    width: 100%;
+}
+.menu{
+    margin-right: 50px;
+    width: 450px;
+}
+.menu > .button{
+    color: white;
+    background-color: #16FF00;
+    border-radius: 7px;
+    border: none;
+    width: 160px;
+    height: 40px;
+    font-size: 17px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.menu  > a {
+    margin-right: 20px;
+    font-size: 17px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+.logo{
+    margin-left: 50px;
+}
+.nav-bar-personel-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 150px;
+}
+.nav-bar-personel-info-icons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-bar-personel-info-icons{
+    width: 80px;
+}
+.nav-bar-personel-info-icons > .fa-caret-down{
+    cursor:pointer;
+}
+.drop-down-menu{
+    width:250px;
+    height:250px;
+    border: 1px solid black;
+    color:black;
+    border-radius:7px;
+    display:flex;
+    align-items: center;
+    flex-direction:column;
+    position:absolute;
+    background-color:#EEEEEE;
+    right:25px;
+    top:70px;
+    box-shadow: 2px 2px 5px black;
+}
+.drop-down-menu > a ,.drop-down-menu > a > p , .drop-down-menu > a > i{
+    color:black;
+    font-size:18px;
+}
+.drop-down-menu > a {
+    height:auto ;
+    width:100%;
+    border-bottom:1px solid black;
+    display:flex;
+    padding:15px;
+    align-items: center;
+}
+.drop-down-menu > a > p{
+    padding:5px;
+    margin-left:10px;
+    
+}
+.nav-bar-personel-info-icons{
+    width : 35px
+}
+.nav-bar-personel-info{
+    width:140px;
+    justify-content:space-between;
+}
+.hidden{
+    display:none;
+}

@@ -1,49 +1,47 @@
-
-<!DOCTYPE html>
-<html lang="ar-fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html.twig" %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{asset('web/css/all-users.css')}}"> 
+    <link rel="stylesheet" href="{{asset('build/users-list.css')}}"> 
 {% endblock %}
 {% block javascripts %}
     <script src="https://kit.fontawesome.com/640b361ca9.js" crossorigin="anonymous"></script>
 {% endblock %} 
-    <title></title>
-</head>
-<body>
+{% block body %}
     {% for user in users %}
         <div class="user">
                 <div class="personel-infos">
                     <div class="first_name">
                         <div class="icon"><i class="fa-solid fa-user"></i></div>
-                        <p class="text">{{user.getPrenom() }}</p>
+                        <p class="field-text">{{user.getPrenom() }}</p>
                     </div>
                     <div class="last_name">
                         <div class="icon"><i class="fa-solid fa-user"></i></div>
-                        <p class="text"> {{ user.getNom() }}</p>
+                        <p class="field-text"> {{ user.getNom() }}</p>
                     </div>
                 </div>
                 <div class="email-infos">
                     <div class="email">
                         <div class="icon"><i class="fa-solid fa-envelope"></i></div>
-                        <p class="text"> {{ user.getEmail() }}</p>
+                        <p class="field-text"> {{ user.getEmail() }}</p>
                     </div>
                     <div class="password">
                         <div class="icon"><i class="fa-solid fa-lock"></i></div>
-                        <p class="text">{{ user.getPassword() }}</p>
+                        <p class="field-text">{{ user.getPassword() }}</p>
                     </div>
             </div>
             <div class="btn">
-                <a href="{{path('users.modifier_user' , {'id' : user.getId() }) }}" class="update">modifier</a>
-                <a href="{{path('users.supprimer_user' , {'id' : user.getId() }) }}" class="delete">supprimer</a>
+                {% if ('ROLE_ADMIN' in user.roles and 'ROLE_ADMIN' in me.roles) or ('ROLE_SUPERADMIN' in user.roles and 'ROLE_ADMIN' in me.roles) or ('ROLE_SUPERADMIN' in user.roles and 'ROLE_SUPERADMIN' in me.roles) %}
+                <a href="{{path('users.modifier_user' , {'id' : user.getId() }) }}" class="update disabled-link-update">modifier</a>
+                <a href="{{path('users.supprimer_user' , {'id' : user.getId() }) }}" class="delete disabled-link-delete">supprimer</a>
+                {% else %}
+                    <a href="{{path('users.modifier_user' , {'id' : user.getId() }) }}" class="update">modifier</a>
+                    <a href="{{path('users.supprimer_user' , {'id' : user.getId() }) }}" class="delete">supprimer</a>
+                {% endif %}
             </div>
             </div>
         </div> 
     {% endfor %}
-
-</body>
-</html>
+    <a class="question-list" href="{{path('question_all')}}">liste des question</a>
+    <a class="add-user" href="{{path('users.add_user')}}">Ajouter utilisateur</a>
+    <a class="all-lessons" href="{{path('app_lessons')}}">retour</a>
+{% endblock %}
 

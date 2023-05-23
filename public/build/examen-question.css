@@ -15,7 +15,7 @@
     border-radius: 7px;
 }
 .question-image{
-    margin-top: 30px;
+    margin-top: 10px;
     width: 75%;
     height: 300px;
     border-radius: 7px;
@@ -97,7 +97,7 @@
     width: 100px;
     height: 50px;
     left: 50px;
-    top: 50px;
+    top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,8 +125,33 @@
 .reponse{
     position: relative;
     top: 200px;
-    left: -15px;
+    left: 20px;
 }
-input{
+.reponse-correct{
+    left: 40px;
+}
+input[type="radio"]{
     visibility: hidden;
+}
+.leftandright{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.leftandright > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: blue;
+}
+.prev-reponse{
+    margin-left: 20px;
+}
+.next-reponse{
+    margin-right: 20px;
 }

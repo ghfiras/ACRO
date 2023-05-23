@@ -1,0 +1,35 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('build/sign-in.css')}}"> 
+{% endblock %}
+{% block javascripts %}
+    <script src="https://kit.fontawesome.com/640b361ca9.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block body %}
+<div class="form-container log-in-form">
+    <h2>ACRO</h2>
+    <h5>Log IN</h5>
+<form action="{{ path('app_login') }}" method="post">
+    <div class="form-field">
+        <label for="username">Email:</label>
+        <div class="input-field">
+            <div class="field-icon"><i class="fa-solid fa-envelope"></i></div>
+            <input type="text" id="username" name="_username" autofocus placeholder="example@gmail.com"/>
+        </div>
+    </div>
+    <div class="form-field">
+        <label for="password">Password:</label>
+        <div class="input-field">
+            <div class="field-icon"><i class="fa-solid fa-lock"></i></div>
+            <input type="password" id="password" name="_password" placeholder="********"/>
+        </div>
+    </div>
+    {% if error %}
+        <div class="errors">{{ error.messageKey|trans(error.messageData, 'security') }} </div>
+    {% endif %}
+    <a href="{{path('app_register')}}" class="log-in">créer nouveau compte ?</a>
+    <div class="btn">
+        <button type="submit">Confirm</button>
+    </div>
+</form>
+<div>  
+{% endblock %}

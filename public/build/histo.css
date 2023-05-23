@@ -1,0 +1,128 @@
+body{
+    height: 100vh;
+    overflow-y: scroll;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 92%;
+    overflow-y: scroll;
+}
+.examen{
+    border: 1px black solid;
+    height: 270px;
+    width: 60%;
+    border-radius: 15px ;
+    margin-top: 20px;
+    background-color:#EEEEEE;
+}
+.examen-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px;
+    border-bottom: 2px dotted black ;
+}
+.date{
+    margin-left: 30px;
+}
+.score{
+    margin-right: 30px;
+}
+.date , .score {
+    font-size: 25px;
+    color: black;
+}
+.questions{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+.question{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+
+}
+.correct{
+    border: 4px green solid;
+    color: green;
+}
+.wrong{
+    border: 4px #DC3545 solid;
+    color: #DC3545;
+}
+.pass{
+    border: 4px #FFC107 solid;
+    color: #FFC107;
+}
+.pass-examen{
+    color: green;
+}
+.fail-examen{
+    color: #DC3545;
+}
+.fail-examen , .pass-examen {
+    font-weight: bolder;
+}
+.questions > a {
+    cursor: pointer;
+}
+.note{
+    width: 60%;
+    height: 50px;
+    border-radius: 15px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    direction: rtl;
+    background-color: #9DB2BF;
+}
+.note > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px;
+}
+.yel-cer , .red-cer , .gre-cer{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: none;
+    
+}
+
+.yel-cer{
+    background-color: #FFC107;
+}
+.red-cer{
+    background-color: #DC3545;
+}
+.gre-cer{
+    background-color: green;
+}
+.vide{
+    margin-top: 50px;
+}
+.delete-history{
+    background-color: #DC3545;
+    color:white;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    cursor: pointer;
+}

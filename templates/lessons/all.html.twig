@@ -1,18 +1,19 @@
-{% extends 'before.html.twig' %}
+{% extends user is null ? 'before.html.twig' : 'after.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('web/css/all-lessons.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/all.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/all-lessons.css') }}">
 {% endblock %}
 {% block body %}
     <div class="container">
     {% for lesson in lessons %}
-        <div class="lessons-container">
+        <a class="lessons-container">
             <div class="image-container">
                 <img src="{{ asset(lesson.image) }}" alt="">
             </div> 
             <div class="lesson-title">
                 <p>{{ lesson.categorie }}</p>
             </div>
-        </div>  
+        </a>  
     {% endfor %}
     </div>
 {% endblock %}

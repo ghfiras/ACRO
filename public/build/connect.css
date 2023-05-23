@@ -6,6 +6,7 @@ body{
     justify-content: center;
     flex-direction: column;
     padding: 0;
+    background-color: #DDE6ED;
 }
 .form-container{
     border: 3px solid #1D267D;
@@ -16,6 +17,18 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: white;
+}
+.mdp-form-container{
+    border: 3px solid #1D267D;
+    border-radius: 10px;
+    width: 450px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
 }
 form{
     width: 350px;
@@ -77,4 +90,10 @@ h5{
     box-shadow: 3px 3px;
     cursor: grabbing;
     font-size: 20px;
+}
+.log-in-form{
+    height: 600px;
+}
+i{
+    color: black;
 }

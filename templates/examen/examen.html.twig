@@ -1,6 +1,6 @@
-{% extends "before.html.twig" %}
+{% extends user is null ? 'before.html.twig' : 'after.html.twig' %}
 {% block stylesheets %}
-<link rel="stylesheet" href=" {{ asset('web/css/examen-question.css') }}">
+<link rel="stylesheet" href=" {{ asset('build/examen-question.css') }}">
 {% endblock %}
 {% block body %}
     <div class="container">
